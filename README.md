@@ -52,13 +52,13 @@ The input image `--image_path` will be edited to achieve a higher human preferen
        ```
    * Baselines: Inversion + Guided sampling methods(DPS, FreeDoM, TFG)
 
-     Change `--method_name` to `inversion_dps`, `inversion_freedom`, or `inversion_tfg` to run the corresponding method.
-     You can also modify `--method_name` and the corresponding hyperparameters in the other scenarios below to run the baselines for those tasks.
        ```
        python ./src/edit_demo.py --method_name inversion_tfg --reward_name ImageReward \
      --image_path ./assets/nature.png --reward_prompt "colorful painting, river flowing grass field with flowers." \
      --depth 0.7 --tfg_rho 1.0 --tfg_mu 0.5
        ```
+     Change `--method_name` to `inversion_dps`, `inversion_freedom`, or `inversion_tfg` to run the corresponding method.
+     You can also modify `--method_name` and the corresponding hyperparameters in the other scenarios below to run the baselines for those tasks.
 ### 2. Style Transfer(w/ Gram matrix)
 
 The input image `--image_path` will be edited to match the style of a given style image `--style_image_path`.
