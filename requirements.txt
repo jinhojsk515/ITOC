@@ -1,0 +1,14 @@
+numpy==1.26.3
+wandb==0.19.8
+git+https://github.com/huggingface/diffusers@af28ae2d5ba0ef80d99fff7859ebea730e1cf3f8#egg=diffusers
+accelerate==1.2.1
+torch==2.6.0
+torchvision==0.21.0
+Pillow==11.1.0
+PyYAML==6.0.2
+pytorch-lightning==2.5.0.post0
+transformers==4.50.1
+git+https://github.com/THUDM/ImageReward.git@2ca71bac4ed86b922fe53ddaec3109fe94d45fd3#egg=image_reward
+git+https://github.com/tgxs002/HPSv2.git#egg=hpsv2
+clip
+matplotlib
