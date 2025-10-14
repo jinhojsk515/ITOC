@@ -4,6 +4,7 @@ Official GitHub repository for
 *[Training-Free Reward-Guided Image Editing via Trajectory Optimal Control(2025)](https://www.arxiv.org/abs/2509.25845)*.
 Please refer to the paper if you want more details.
 
+![fig1](https://github.com/user-attachments/assets/df4332b3-c256-48be-a56a-5e1b33eba43e)
 
 ***
 
@@ -12,6 +13,9 @@ Recent advancements in diffusion and flow-matching models have demonstrated rema
 A prominent line of research involves reward-guided guidance, which steers the generation process during inference to align with specific objectives. However, leveraging this reward-guided approach to the task of image editing, which requires preserving the semantic content of the source image while enhancing a target reward, is largely unexplored. 
 In this work, we introduce a novel framework for training-free, reward-guided image editing. We formulate the editing process as a trajectory optimal control problem where the reverse process of a diffusion model is treated as a controllable trajectory originating from the source image, and the adjoint states are iteratively updated to steer the editing process. 
 Through extensive experiments across distinct editing tasks, we demonstrate that our approach significantly outperforms existing inversion-based training-free guidance baselines, achieving a superior balance between reward maximization and fidelity to the source image without reward hacking.
+
+![fig2](https://github.com/user-attachments/assets/34296c43-7f2e-4d77-87e8-43380c7ba593)
+
 
 ## 🛠️ Requirements
 ```
@@ -22,7 +26,7 @@ pip install -r requirements.txt
 Some reward functions(ImageNet1k classifier logit, StyleCLIP Gram matrix) require the model checkpoint to evaluate, which are too heavy to be included in this repo.
 You can download the checkpoints in ***[{Working in Progress}]()*** and put them in to `./model` repository.
 
-## 🎯 Reward-guided image editing
+## 🖼 Reward-guided image editing
 Check out the arguments in the script files to see more details.
 
 ### 0. Hyperparameters
