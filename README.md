@@ -7,7 +7,7 @@ Please refer to the paper if you want more details.
 
 ***
 
-## 📑 Abstract
+## 🪧 Abstract
 Recent advancements in diffusion and flow-matching models have demonstrated remarkable capabilities in high-fidelity image synthesis. 
 A prominent line of research involves reward-guided guidance, which steers the generation process during inference to align with specific objectives. However, leveraging this reward-guided approach to the task of image editing, which requires preserving the semantic content of the source image while enhancing a target reward, is largely unexplored. 
 In this work, we introduce a novel framework for training-free, reward-guided image editing. We formulate the editing process as a trajectory optimal control problem where the reverse process of a diffusion model is treated as a controllable trajectory originating from the source image, and the adjoint states are iteratively updated to steer the editing process. 
@@ -19,7 +19,8 @@ conda create -n itoc python=3.11
 conda activate itoc
 pip install -r requirements.txt
 ```
-The model checkpoint and data are too heavy to be included in this repo and can be found in ***[here](https://drive.google.com/drive/folders/170znWA5u3nC7S1mzF7RPNP5faAn56Q45?usp=sharing).***
+Some reward functions(ImageNet1k classifier logit, StyleCLIP Gram matrix) require the model checkpoint to evaluate, which are too heavy to be included in this repo.
+You can download the checkpoints in ***[{Working in Progress}]()*** and put them in to `./model` repository.
 
 ## 🎯 Reward-guided image editing
 Check out the arguments in the script files to see more details.
@@ -87,7 +88,7 @@ The input image `--image_path` will be edited to align with a given text prompt 
      --deterministic True --reward_multiplier 1000 --n_iter 20 --lr 5e-3 --depth 0.5
        ```
 
-## Citation
+## 📑 Citation
 If you use this code in your research, please consider citing the paper:
 
 ```bibtex
