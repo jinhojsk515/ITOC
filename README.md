@@ -1,4 +1,4 @@
-# Image Trajectory Optimal Control
+# Training-Free Reward-Guided Image Editing via Trajectory Optimal Control
 
 Official GitHub repository for 
 *[Training-Free Reward-Guided Image Editing via Trajectory Optimal Control(2025)](https://www.arxiv.org/abs/2509.25845)*.
