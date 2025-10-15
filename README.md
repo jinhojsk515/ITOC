@@ -36,8 +36,8 @@ Check out the arguments in the script files to see more details.
 * `--reward_multiplier`: Multiplier for the final reward function (and its gradient). **(ITOC)**
 * `--depth`: The depth of the forward noising process for inversion. **(DPS, FreeDoM, TFG, ITOC)**
 * `--lr`: Learning rate for the optimization process. **(GA, ITOC)**
-* `--tfg_rho`: Guidance scale multiplied on $\nabla_{\x_t}r(\hat\x_{1|t})$. **(DPS, FreeDoM, TFG)**
-* `--tfg_mu`: Guidance scale multiplied on $\nabla_{\hat\x_{1|t}}r(\hat\x_{1|t})$. **(TFG)**
+* `--tfg_rho`: Guidance scale multiplied on $\nabla_{x_t}r(\hat x_{1|t})$. **(DPS, FreeDoM, TFG)**
+* `--tfg_mu`: Guidance scale multiplied on $\nabla_{\hat x_{1|t}}r(\hat x_{1|t})$. **(TFG)**
 
 ### 1. Human Preference(w/ ImageReward)
      
