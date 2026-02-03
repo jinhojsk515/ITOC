@@ -63,7 +63,11 @@ The input image `--image_path` will be edited to achieve a higher human preferen
        ```
      Change `--method_name` to `inversion_dps`, `inversion_freedom`, or `inversion_tfg` to run the corresponding method.
      
-     For the other scenarios below, you can similarly modify `--method_name` and the corresponding hyperparameters to run the baselines.
+     
+
+> [!tip]
+> - If you want to use StableDiffusion 3, run ``edit_demo_sd3.py`` instead of ``edit_demo.py``.
+> - For the other scenarios below, you can similarly modify `--method_name` and the corresponding hyperparameters to run the baselines.
 ### 2. Style Transfer(w/ Gram matrix)
 
 The input image `--image_path` will be edited to match the style of a given style image `--style_image_path`.
