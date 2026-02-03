@@ -31,7 +31,7 @@ Check out the arguments in the script files to see more details.
 
 ### 0. Hyperparameters
 
-* `--deterministic`: If True, the initial trajectory for the source image is generated with deterministic DDIM inversion. If False, it is generated with Markovian DDPM forward process. **(ITOC)**
+* `--deterministic`: If contained, the initial trajectory for the source image is generated with deterministic DDIM inversion. Otherwise, it is generated with Markovian DDPM forward process. **(ITOC)**
 * `--n_iter`: Number of iterations for the optimization loop. **(GA, ITOC)**
 * `--reward_multiplier`: Multiplier for the final reward function (and its gradient). **(ITOC)**
 * `--depth`: The depth of the forward noising process for inversion. **(DPS, FreeDoM, TFG, ITOC)**
@@ -46,7 +46,7 @@ The input image `--image_path` will be edited to achieve a higher human preferen
        ```
        python ./src/edit_demo.py --method_name itoc --reward_name ImageReward \
      --image_path ./assets/nature.png --reward_prompt "colorful painting, river flowing grass field with flowers." \
-     --deterministic True --reward_multiplier 500 --n_iter 20 --lr 5e-3 --depth 0.5
+     --deterministic --reward_multiplier 500 --n_iter 20 --lr 5e-3 --depth 0.5
        ```
    * Baselines: Gradient Ascent
        ```
@@ -70,7 +70,7 @@ The input image `--image_path` will be edited to match the style of a given styl
        ```
        python ./src/edit_demo.py --method_name itoc --reward_name Gram_Diff \
      --image_path ./assets/portrait.png --style_image_path ./assets/style_ref.png \
-     --deterministic True --reward_multiplier 1000 --n_iter 20 --lr 10e-3 --depth 0.5
+     --deterministic --reward_multiplier 1000 --n_iter 20 --lr 10e-3 --depth 0.5
        ```
 
 ### 3. Counterfactual Generation(w/ classifier logit)
@@ -80,7 +80,7 @@ The input image `--image_path` will be edited to alter the decision of the class
        ```
        python ./src/edit_demo.py --method_name itoc --reward_name ImageNet1k_classifier \
      --image_path ./assets/ladybug.png --reward_class 306 \
-     --deterministic True --reward_multiplier 250 --n_iter 20 --lr 5e-3 --depth 0.5
+     --deterministic --reward_multiplier 250 --n_iter 20 --lr 5e-3 --depth 0.5
        ```
 
 ### 4. Text-guided Image Editing(w/ CLIP cosine similarity)
@@ -89,7 +89,7 @@ The input image `--image_path` will be edited to align with a given text prompt 
        ```
        python ./src/edit_demo.py --method_name itoc --reward_name Clip_Score \
      --image_path ./assets/face.png --reward_prompt "a face of a smiling man." \
-     --deterministic True --reward_multiplier 1000 --n_iter 20 --lr 5e-3 --depth 0.5
+     --deterministic --reward_multiplier 1000 --n_iter 20 --lr 5e-3 --depth 0.5
        ```
 
 ## 📑 Citation
