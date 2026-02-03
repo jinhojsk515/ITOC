@@ -4,6 +4,8 @@ Official GitHub repository for
 *[Training-Free Reward-Guided Image Editing via Trajectory Optimal Control(2025)](https://www.arxiv.org/abs/2509.25845)*.
 Please refer to the paper if you want more details.
 
+**🎉 The paper is accepted(poster) in ICLR 2026.**
+
 ![fig1](https://github.com/user-attachments/assets/df4332b3-c256-48be-a56a-5e1b33eba43e)
 
 ***
