@@ -79,7 +79,7 @@ The input image `--image_path` will be edited to alter the decision of the class
    * ITOC(ours)
        ```
        python ./src/edit_demo.py --method_name itoc --reward_name ImageNet1k_classifier \
-     --image_path ./assets/ladybug.png --reward class 306 \
+     --image_path ./assets/ladybug.png --reward_class 306 \
      --deterministic True --reward_multiplier 250 --n_iter 20 --lr 5e-3 --depth 0.5
        ```
 
