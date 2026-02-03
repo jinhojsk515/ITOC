@@ -26,7 +26,7 @@ conda activate itoc
 pip install -r requirements.txt
 ```
 The ImageNet1k-classifier reward function requires the model checkpoint to evaluate, which are too heavy to be included in this repo.
-You can download the checkpoints in ***[{Working in Progress}]()*** and put them in to `./model` repository.
+You can download the checkpoint in ***[here](https://github.com/MadryLab/robustness)***(ImageNet, L2-norm, ResNet50, $\varepsilon=3.0$, imagenet_l2_3_0.pt) and put it in to `./model` repository.
 
 ## 🖼 Reward-guided image editing
 Check out the arguments in the script files to see more details.
