@@ -87,7 +87,7 @@ The input image `--image_path` will be edited to alter the decision of the class
 The input image `--image_path` will be edited to align with a given text prompt `--reward_prompt`.
    * ITOC(ours)
        ```
-       python ./src/edit_demo.py --method_name itoc --reward_name CLIP_Score \
+       python ./src/edit_demo.py --method_name itoc --reward_name Clip_Score \
      --image_path ./assets/face.png --reward_prompt "a face of a smiling man." \
      --deterministic True --reward_multiplier 1000 --n_iter 20 --lr 5e-3 --depth 0.5
        ```
