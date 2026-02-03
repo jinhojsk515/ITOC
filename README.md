@@ -23,7 +23,7 @@ conda create -n itoc python=3.11
 conda activate itoc
 pip install -r requirements.txt
 ```
-Some reward functions(ImageNet1k classifier logit, StyleCLIP Gram matrix) require the model checkpoint to evaluate, which are too heavy to be included in this repo.
+The ImageNet1k-classifier reward function requires the model checkpoint to evaluate, which are too heavy to be included in this repo.
 You can download the checkpoints in ***[{Working in Progress}]()*** and put them in to `./model` repository.
 
 ## 🖼 Reward-guided image editing
@@ -62,7 +62,8 @@ The input image `--image_path` will be edited to achieve a higher human preferen
      --depth 0.7 --tfg_rho 1.0 --tfg_mu 0.5
        ```
      Change `--method_name` to `inversion_dps`, `inversion_freedom`, or `inversion_tfg` to run the corresponding method.
-     You can also modify `--method_name` and the corresponding hyperparameters in the other scenarios below to run the baselines for those tasks.
+     
+     For the other scenarios below, you can similarly modify `--method_name` and the corresponding hyperparameters to run the baselines.
 ### 2. Style Transfer(w/ Gram matrix)
 
 The input image `--image_path` will be edited to match the style of a given style image `--style_image_path`.
