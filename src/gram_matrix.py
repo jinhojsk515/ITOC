@@ -6,7 +6,6 @@ from torchvision.io import read_image
 
 
 class StyleCLIP(torch.nn.Module):
-
     def __init__(self, network, device, target=None):
         super(StyleCLIP, self).__init__()
         self.model = CLIPModel.from_pretrained(network)
@@ -38,8 +37,6 @@ class StyleCLIP(torch.nn.Module):
     def get_gram_matrix(self, img):
         img = img.to(self.device)
         img = torch.nn.functional.interpolate(img, size=self.image_size, mode='bicubic')
-        #img = self.transforms(img)
-        # following mpgd
         feats = self.model.vision_model(img, output_hidden_states=True, return_dict=True).hidden_states[2]
         feats = feats[:, 1:, :]  # [bsz, seq_len, h_dim]
         gram = torch.bmm(feats.transpose(1, 2), feats)
@@ -49,7 +46,7 @@ class StyleCLIP(torch.nn.Module):
         img = img.resize((224, 224), Image.Resampling.BILINEAR)
         return self.transforms(ToTensor()(img)).unsqueeze(0)
 
-    def forward(self, x, target_img=None):
+    def __call__(self, x, target_img=None):
         if target_img is not None:  self.target_embedding = self.get_target_embedding(target_img)
         assert self.target_embedding is not None, "Target embedding or target image must be provided."
 

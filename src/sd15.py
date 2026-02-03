@@ -5,27 +5,30 @@ Forward operators follow DPS and DDRM/DDNM.
 from typing import Any, Callable, Dict, Optional
 
 import torch
+import torch.nn as nn
 from diffusers import DDIMScheduler, StableDiffusionPipeline
 from tqdm import tqdm
 import numpy as np
 from metrics import reward_function
 
 
-class StableDiffusion():
+class StableDiffusion(nn.Module):
     def __init__(self,
                  NFE: int = 50,
-                 model_key: str = "runwayml/stable-diffusion-v1-5",  # "runwayml/stable-diffusion-v1-5" "pt-sk/stable-diffusion-1.5"
+                 model_key: str = "runwayml/stable-diffusion-v1-5",
                  device: Optional[torch.device] = torch.device("cuda"), deterministic: bool = False,
                  **kwargs):
+        super().__init__()
         self.device = device
         self.NFE = NFE
         self.dtype = kwargs.get("pipe_dtype", torch.float16)
         pipe = StableDiffusionPipeline.from_pretrained(model_key, torch_dtype=self.dtype).to(device)
         self.vae = pipe.vae.eval()
+        for p in self.vae.parameters(): p.requires_grad = False
         self.tokenizer = pipe.tokenizer
         self.text_encoder = pipe.text_encoder.eval()
         self.unet = pipe.unet.eval()
-        self.soc_pipeline = pipe
+        del pipe
 
         self.scheduler = DDIMScheduler.from_pretrained(model_key, subfolder="scheduler")
         self.total_alphas = self.scheduler.alphas_cumprod.clone()
@@ -43,7 +46,7 @@ class StableDiffusion():
         self.reward_func = None
         self.reward_fn = lambda x, prompt: reward_function(
             x, prompt,
-            model=self.soc_pipeline,
+            model=None,
             reward_func=self.reward_func,
             verbose=False
         )
@@ -171,7 +174,6 @@ class StableDiffusion():
         def inner_product(x):
             # x with shape (batch_size, 4, 64, 64)
             x_model_input = torch.cat([x] * 2) if adjoint_cfg_scale != 1.0 else x
-            #x_model_input = self.soc_pipeline.scheduler.scale_model_input(x_model_input, t)
             noise_pred = self.unet(x_model_input.to(self.unet.dtype), t, encoder_hidden_states=prompt_embeds.to(self.unet.dtype), return_dict=False, )[0]
 
             # perform guidance
@@ -209,7 +211,6 @@ class StableDiffusion():
             reward_grads, reward_values = initial_grad
         else:
             reward_grads, reward_values = self.grad_rewards(all_x_t[:, -1], prompts, get_grad=get_grad)
-            # reward_grads, reward_values = torch.randn_like(all_x_t[:,-1]), torch.randn(all_x_t.shape[0], device=all_x_t.device)
         assert all_x_t[:, :-1].shape[1] == len(all_t)
         num_timesteps = all_x_t.shape[1]
 
