@@ -113,4 +113,4 @@ If you use this code in your research, please consider citing the paper:
 
 ## 💡 Acknowledgement
 * The code for the adjoint state calculation is based on & modified from the official code of [Adjoint Matching](https://github.com/microsoft/soc-fine-tuning-sd).
-* TFG code for TFG and other baselines(DPS, FreeDoM) is based on & modified from the official code of [TFG](https://github.com/YWolfeee/Training-Free-Guidance).
+* The code for TFG and other baselines(DPS, FreeDoM) is based on & modified from the official code of [TFG](https://github.com/YWolfeee/Training-Free-Guidance).
